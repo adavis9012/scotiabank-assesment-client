@@ -1,0 +1,33 @@
+.login {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &_title {
+    text-align: center;
+  }
+
+  &_form {
+    width: 100%;
+    max-width: 300px;
+    flex-direction: column;
+  }
+
+  &_button {
+    margin: 10px 0;
+  }
+
+  &_text {
+    font-size: 1rem;
+
+    &-selectable {
+      cursor: pointer;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

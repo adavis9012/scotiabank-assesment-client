@@ -1,0 +1,30 @@
+@import "../../../settings/variables";
+@import "../../../settings/mixins";
+
+.header {
+  padding: 10px;
+  background-color: $white;
+
+  &_nav {
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+
+    @include desktop {
+      width: 1024px;
+      text-align: left;
+    }
+  }
+
+  &_item {
+    padding: 10px;
+    text-decoration: none;
+    color: #5db7f0;
+
+    &--selected {
+      color: $dark-blue;
+      text-decoration: none;
+      border-bottom: 1px solid;
+    }
+  }
+}

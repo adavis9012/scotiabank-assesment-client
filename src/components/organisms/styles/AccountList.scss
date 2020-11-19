@@ -1,0 +1,14 @@
+@import "../../../settings/variables";
+@import "../../../settings/mixins";
+
+.accountList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+
+  @include desktop {
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+}

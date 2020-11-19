@@ -1,0 +1,31 @@
+@import "../../settings/variables";
+@import "../../settings/mixins";
+
+.mainPage {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+
+  @include media(tablet, desktop) {
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+  &_content {
+    width: 100%;
+    padding: 1rem;
+
+    @include media(tablet, desktop) {
+      width: 70%;
+    }
+  }
+
+  &_login{
+    width: 100%;
+    padding: 1rem;
+
+    @include media(tablet, desktop) {
+      width: 30%;
+    }
+  }
+}

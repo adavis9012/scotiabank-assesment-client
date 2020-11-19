@@ -1,0 +1,15 @@
+.currency {
+  &_sign {
+    position: relative;
+    font-size: 0.8rem;
+    top: -3px;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  &_value {
+    padding-left: 2px;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}

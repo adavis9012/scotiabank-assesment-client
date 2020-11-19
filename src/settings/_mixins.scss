@@ -1,0 +1,27 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$breakpoints: (
+        mobile : 0px,
+        tablet : $tablet-width,
+        desktop: $desktop-width
+);
+
+@mixin media($keys...){
+  @each $key in $keys {
+    @media (min-width: map-get($breakpoints, $key)){
+      @content
+    }
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
