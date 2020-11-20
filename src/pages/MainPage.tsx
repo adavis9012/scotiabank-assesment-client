@@ -14,15 +14,15 @@ const MainPage = ((props: any) => {
                 <section className="mainPage_content">
                     <h1>Prueba Tecnica Scotiabank</h1>
                     <p>
-                        Sitio web desarrollado por <strong>David Velandia</strong>
-                    </p>
-                    <p>
                         Para empezar ingrese utilizando las credenciales enviadas por correo.
                     </p>
                     <p>
                         Tambien puede crear un nuevo usuario, sin embargo, este no tendra ninguna cuenta ni movimientos.
                     </p>
                     <hr/>
+                    <p>
+                        Sitio web desarrollado por <strong>David Velandia</strong>
+                    </p>
                     <h2>Github</h2>
                     <p><strong>GitHub </strong> <a href="https://github.com/adavis9012/scotiabank-assesment-client">Cliente</a></p>
                     <p><strong>GitHub </strong> <a href="https://github.com/adavis9012/scotiabank-assesment-server">Servidor</a></p>

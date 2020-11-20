@@ -11,4 +11,12 @@
     flex-wrap: wrap;
     justify-content: start;
   }
+
+  &_link {
+    color: $secondary;
+
+    &:visited {
+      color: $secondary;
+    }
+  }
 }

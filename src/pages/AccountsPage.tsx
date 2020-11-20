@@ -1,7 +1,6 @@
 import React from 'react';
 import './styles/AccountsPage.scss';
 import {ApolloError, gql, useQuery} from "@apollo/client";
-import {RouteComponentProps} from "react-router";
 import AccountList from "../components/organisms/AccountList";
 import {Link} from "react-router-dom";
 
@@ -16,7 +15,7 @@ interface ACCOUNT_LIST_DATA {
     accounts: ACCOUNT_DATA[]
 }
 
-const ACCOUNTS_QUERY = gql`
+export const ACCOUNTS_QUERY = gql`
     {
         accounts(orderBy: {availableValue: desc}) {
             accountId: id
@@ -27,7 +26,7 @@ const ACCOUNTS_QUERY = gql`
     }
 `;
 
-const AccountsPage: React.FC<RouteComponentProps> = (props) => {
+const AccountsPage: React.FC = () => {
     let {loading, error, data} = useQuery<ACCOUNT_LIST_DATA>(
         ACCOUNTS_QUERY
     );
