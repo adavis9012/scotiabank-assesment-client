@@ -7,6 +7,8 @@ interface AccountListProps {
 }
 
 const AccountList: FunctionComponent<AccountListProps> = (props) => {
+    if(!props.accounts.length) return <p>No hay cuentas registradas</p>;
+
     const accountList =  props.accounts.map((data: AccountProps) => {
         return <Account key={`account-${data.statement}`} {...data}/>;
     });

@@ -1,4 +1,5 @@
 type Query {
+    account(id: ID!): Account!
     accounts(filter: String, orderBy: AccountsOrderByInput): [Account!]!
     movements(accountId: ID!): [Movement!]!
     client: User!
@@ -39,6 +40,7 @@ type Movement {
     createdAt: String
     amount: Float!
     type: MovementTypes!
+    account: Account!
     description: String!
 }
 

@@ -1,0 +1,61 @@
+@import "../../../settings/variables";
+
+.movement {
+  list-style-type: none;
+  padding: 10px 10px 10px 30px;
+  border: 1px solid $gray;
+  border-bottom: 0;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  &:last-of-type {
+    border-bottom: 1px solid $gray;
+  }
+
+  &:before {
+    content: '';
+    background-color: $gray;
+    opacity: 0.7;
+    display: block;
+    height: calc(100% + 2px);
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 25px;
+  }
+
+
+  &_head {
+    flex-basis: 100%;
+    line-height: 15px;
+    margin: 0;
+  }
+
+  &_content {
+    font-weight: 700;
+    line-height: 15px;
+    margin: 10px 0 0;
+  }
+
+  &_icon {
+    position: absolute;
+    top: 20px;
+    left: 5px;
+
+    &_entry {
+      width: 1rem;
+      stroke-width: 2;
+    }
+
+    &-credit {
+      color: $green;
+    }
+
+    &-debit {
+      color: $primary;
+      transform: scaleX(-1);
+    }
+  }
+}

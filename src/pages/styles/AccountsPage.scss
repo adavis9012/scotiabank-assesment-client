@@ -9,11 +9,6 @@
   align-content: space-around;
   padding: 10px;
 
-  @include desktop {
-    max-width: 1024px;
-    margin: 0 auto;
-  }
-
   &_wrapper {
     display: flex;
     height: 100%;

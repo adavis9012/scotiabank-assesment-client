@@ -4,6 +4,7 @@ import {ApolloError, gql, useMutation} from "@apollo/client";
 import {RouteComponentProps} from "react-router";
 import Button from "../atoms/Button";
 import './styles/Login.scss';
+import {createBrowserHistory} from 'history';
 import Input from "../atoms/Input";
 
 interface State {
@@ -11,12 +12,13 @@ interface State {
     email?: string
     password?: string
     name?: string
+    lastname?: string
     idCard?: string
     error?: string
 }
 
 interface Action extends State {
-    type: 'SET_LOGIN' | 'SET_EMAIL' | 'SET_PASSWORD' | 'SET_NAME' | 'SET_ID_CARD' | 'SET_ERROR'
+    type: 'SET_LOGIN' | 'SET_EMAIL' | 'SET_PASSWORD' | 'SET_NAME' | 'SET_LAST_NAME' |'SET_ID_CARD' | 'SET_ERROR'
 }
 
 interface Data {
@@ -45,6 +47,8 @@ const loginReducer = (state: State, action: Action) => {
         case "SET_LOGIN":
             return {
                 ...state,
+                email: '',
+                password: '',
                 login: action.login
             }
         case "SET_EMAIL":
@@ -62,6 +66,11 @@ const loginReducer = (state: State, action: Action) => {
                 ...state,
                 name: action.name
             }
+        case "SET_LAST_NAME":
+            return {
+                ...state,
+                lastname: action.lastname
+            }
         case "SET_ID_CARD":
             return {
                 ...state,
@@ -77,22 +86,26 @@ const loginReducer = (state: State, action: Action) => {
     }
 }
 
-const Login: React.FC<RouteComponentProps> = (({history}) => {
+const Login: React.FC<RouteComponentProps> = (() => {
     let [state, dispatch] = useReducer(loginReducer, {
         login: true,
         email: '',
         password: '',
         name: '',
+        lastname: '',
         idCard: '',
         error: '',
     });
+    const history = createBrowserHistory({forceRefresh:true})
     const mutationType = state.login ? LOGIN_MUTATION : SIGNUP_MUTATION;
 
     const [loginMutation] = useMutation(mutationType, {
         variables: {
             email: state.email,
             password: state.password,
-            name: state.password
+            citizenshipCard: state.idCard,
+            name: state.name,
+            lastname: state.lastname,
         },
         onCompleted: (data => handleConfirm(data)),
         onError: (error => handleError(error)),
@@ -103,8 +116,9 @@ const Login: React.FC<RouteComponentProps> = (({history}) => {
             <div className="login">
                 <h4 className="login_title">{state.login ? 'Ingresar' : 'Registrarse'}</h4>
                 <div>{state.error && state.error}</div>
-                <form className="login_form">
+                <form className="login_form" onSubmit={handleSubmit}>
                     {renderNameInput()}
+                    {renderLastnameInput()}
                     <Input
                         value={state.email}
                         onChange={e => dispatch({type: 'SET_EMAIL', email: e.target.value})}
@@ -113,10 +127,11 @@ const Login: React.FC<RouteComponentProps> = (({history}) => {
                     {renderIdCardInput()}
                     <Input
                         value={state.password}
+                        type="password"
                         onChange={e => dispatch({type: 'SET_PASSWORD', password: e.target.value})}
                         placeholder="Contraseña"
                     />
-                    <Button className="login_button" onClick={() => loginMutation()}>
+                    <Button className="login_button" onClick={() => {}}>
                         {state.login ? 'ingresar' : 'registrarse'}
                     </Button>
                 </form>
@@ -138,7 +153,17 @@ const Login: React.FC<RouteComponentProps> = (({history}) => {
             <Input
                 value={state.name}
                 onChange={e => dispatch({type: 'SET_NAME', name: e.target.value})}
-                placeholder="Nombre"
+                placeholder="Nombres"
+            />
+        );
+    }
+
+    function renderLastnameInput() {
+        return !state.login && (
+            <Input
+                value={state.lastname}
+                onChange={e => dispatch({type: 'SET_LAST_NAME', lastname: e.target.value})}
+                placeholder="Apellidos"
             />
         );
     }
@@ -147,7 +172,7 @@ const Login: React.FC<RouteComponentProps> = (({history}) => {
         return !state.login && (
             <Input
                 value={state.idCard}
-                onChange={e => dispatch({type: 'SET_ID_CARD', email: e.target.value})}
+                onChange={e => dispatch({type: 'SET_ID_CARD', idCard: e.target.value})}
                 placeholder="Documento de identidad"
             />
         );
@@ -160,8 +185,12 @@ const Login: React.FC<RouteComponentProps> = (({history}) => {
         history.push('/accounts');
     }
 
+    function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+        loginMutation();
+    }
+
     function handleError(error: ApolloError) {
-        console.log({error})
         dispatch({type: 'SET_ERROR', error: error.message});
     }
 

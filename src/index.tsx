@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Application from "./application";
+import Application from "./Application";
 import WebFont from 'webfontloader';
 import config from "./config/config-env";
 import reportWebVitals from './reportWebVitals';

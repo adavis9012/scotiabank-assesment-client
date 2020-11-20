@@ -1,8 +1,9 @@
 import React from 'react';
 import './styles/AccountsPage.scss';
-import {gql, useQuery} from "@apollo/client";
+import {ApolloError, gql, useQuery} from "@apollo/client";
 import {RouteComponentProps} from "react-router";
 import AccountList from "../components/organisms/AccountList";
+import {Link} from "react-router-dom";
 
 interface ACCOUNT_DATA {
     accountId: number
@@ -27,14 +28,14 @@ const ACCOUNTS_QUERY = gql`
 `;
 
 const AccountsPage: React.FC<RouteComponentProps> = (props) => {
-    const {loading, error, data} = useQuery<ACCOUNT_LIST_DATA>(
+    let {loading, error, data} = useQuery<ACCOUNT_LIST_DATA>(
         ACCOUNTS_QUERY
     );
 
     function render() {
         if (loading) return <div>Buscando datos...</div>
 
-        if (error) return <div>Error!</div>;
+        if (error) return handleError(error);
 
         const accounts = geAccountsToRender(data as ACCOUNT_LIST_DATA);
 
@@ -50,6 +51,16 @@ const AccountsPage: React.FC<RouteComponentProps> = (props) => {
 
     function geAccountsToRender(data: ACCOUNT_LIST_DATA): ACCOUNT_DATA[] {
         return data.accounts;
+    }
+
+    function handleError(error: ApolloError) {
+        if(error.message === 'Not authenticated') {
+            return <p>
+                Error de autenticación, ¿Desea <Link to="/">ingresar</Link> o <Link to="/">crear una cuenta</Link>?
+            </p>;
+        }
+
+        return <div>Error!</div>;
     }
 
     return render();

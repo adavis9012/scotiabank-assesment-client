@@ -18,16 +18,17 @@ const Currency: React.FC<CurrencyProps> = ((props) => {
     };
     const numberFormat = new Intl.NumberFormat('es-CO', {
         style: 'decimal',
-        currency: props.type,
         minimumFractionDigits: 0
     });
 
     return (
         <React.Fragment>
+            {props.children < 0 && '('}
             <span className={className.currency}>$</span>
             <span className={className.value}>
-                {numberFormat.format(props.children)}
+                {numberFormat.format(Math.abs(props.children))}
             </span>
+            {props.children < 0 && ')'}
         </React.Fragment>
     );
 });
