@@ -1,12 +1,8 @@
 @import "../../settings/variables";
 @import "../../settings/mixins";
 
-.accountsPage {
+.movementsPage {
   background: $gray-silver;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-content: space-around;
   padding: 10px;
   border-radius: 8px;
 

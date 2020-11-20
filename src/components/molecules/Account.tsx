@@ -4,6 +4,7 @@ import Currency from "../atoms/Currency";
 import {useHistory} from 'react-router-dom';
 
 import './styles/Account.scss';
+import {CreditCardIcon, SavingsIcon} from "../atoms/Icons";
 
 export interface AccountProps {
     accountId: number
@@ -20,14 +21,27 @@ const Account: React.FC<AccountProps> = (props) => {
         history.push(`/movements/${props.accountId}`);
     }
 
+    function getAccountIcon(accountType: string) {
+        switch (accountType.toLowerCase()) {
+            case 'savingaccount':
+                return <SavingsIcon className="account_icon" width="36" />;
+            case 'currentaccount':
+                return <SavingsIcon className="account_icon" width="36" />;
+            case 'creditcard':
+                return <CreditCardIcon className="account_icon" width="36" />;
+            default:
+                return '';
+        }
+    }
+
     function getAccountName(accountType: string): string {
         switch (accountType.toLowerCase()) {
             case 'savingaccount':
-                return 'Cuenta de ahorro';
+                return 'Cuenta de Ahorros';
             case 'currentaccount':
-                return 'Cuenta corriente';
+                return 'Cuenta Corriente';
             case 'creditcard':
-                return  'Tarjeta de credito';
+                return 'Tarjeta de Credito';
             default:
                 return '';
         }
@@ -42,6 +56,7 @@ const Account: React.FC<AccountProps> = (props) => {
     return (
         <div className="account">
             <header className="account_header">
+                {getAccountIcon(props.accountType)}
                 <p className="account_text account_text-header">
                     {getAccountName(props.accountType)}
                     <small className="account_text account_text-small">{getStatement(props.statement)}</small>
@@ -54,6 +69,7 @@ const Account: React.FC<AccountProps> = (props) => {
                 <p className="account_text account_text-description">
                     Saldo disponible
                 </p>
+                <hr/>
                 <Button
                     className="account_button"
                     onClick={handleDetailsClick}

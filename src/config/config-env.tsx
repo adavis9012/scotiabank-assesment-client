@@ -7,7 +7,7 @@ const local: ConfigEnv = {
 };
 
 const production: ConfigEnv = {
-    baseAPI: '',
+    baseAPI: 'http://scotiabank-assessment-server.herokuapp.com/',
 };
 
 export default (() => {

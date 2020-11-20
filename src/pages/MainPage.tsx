@@ -24,7 +24,9 @@ const MainPage = ((props: any) => {
                     </p>
                     <hr/>
                     <h2>Github</h2>
-                    <p>GitHub Personal <a href="https://github/adavis9012">adavis9012</a></p>
+                    <p><strong>GitHub </strong> <a href="https://github.com/adavis9012/scotiabank-assesment-client">Cliente</a></p>
+                    <p><strong>GitHub </strong> <a href="https://github.com/adavis9012/scotiabank-assesment-server">Servidor</a></p>
+                    <p><strong>GitHub Personal</strong> <a href="https://github/adavis9012">adavis9012</a></p>
                     <h2>Linkedin</h2>
                     <a href="https://www.linkedin.com/in/andres-david-velandia">https://www.linkedin.com/in/andres-david-velandia</a>
                     <br/>

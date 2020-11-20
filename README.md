@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Scotiabank Assesment Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Steps (local)
+1- Install all packages
+
+`npm install`
+
+2- Raise [scotiabank-assesment-server](https://github.com/adavis9012/scotiabank-assesment-server)
+
+3- Have fun!
 
 ## Available Scripts
 

@@ -16,6 +16,11 @@
   &_text {
     font-size: 1rem;
 
+    &-greeting {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
     &-selectable {
       cursor: pointer;
 

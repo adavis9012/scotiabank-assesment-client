@@ -7,8 +7,8 @@
   justify-content: center;
   width: 100%;
 
-  @include desktop {
+  @include media(tablet, desktop) {
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: start;
   }
 }

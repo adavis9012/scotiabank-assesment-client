@@ -41,7 +41,7 @@ const AccountsPage: React.FC<RouteComponentProps> = (props) => {
 
         return (
             <section className="accountsPage">
-                <h1>Mis Cuentas</h1>
+                <h1 className="accountsPage_title">Mis Cuentas</h1>
                 <section className="accountsPage_wrapper">
                     <AccountList accounts={accounts} />
                 </section>

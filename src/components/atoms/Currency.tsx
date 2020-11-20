@@ -23,12 +23,11 @@ const Currency: React.FC<CurrencyProps> = ((props) => {
 
     return (
         <React.Fragment>
-            {props.children < 0 && '('}
+            {props.children < 0 && '-'}
             <span className={className.currency}>$</span>
             <span className={className.value}>
                 {numberFormat.format(Math.abs(props.children))}
             </span>
-            {props.children < 0 && ')'}
         </React.Fragment>
     );
 });

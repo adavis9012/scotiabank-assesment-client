@@ -1,3 +1,6 @@
+@import "../../../settings/variables";
+@import "../../../settings/mixins";
+
 .login {
   align-content: center;
   display: flex;
@@ -6,7 +9,16 @@
   justify-content: center;
 
   &_title {
-    text-align: center;
+    text-align: left;
+    font-size: 1.6rem;
+
+    &:after {
+      content:'';
+      margin-top: 10px;
+      width: 32px;
+      border-bottom: 3px solid $primary;
+      display: block;
+    }
   }
 
   &_form {
@@ -24,9 +36,10 @@
 
     &-selectable {
       cursor: pointer;
+      color: $secondary;
 
       &:hover{
-        text-decoration: underline;
+        text-decoration: underline dotted;
       }
     }
   }

@@ -1,60 +1,94 @@
 @import "../../../settings/variables";
+@import "../../../settings/mixins";
 
 .movement {
   list-style-type: none;
-  padding: 10px 10px 10px 30px;
-  border: 1px solid $gray;
+  border: 1px solid $gray-light;
   border-bottom: 0;
   margin: auto;
   position: relative;
+  padding: 10px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   flex-wrap: wrap;
 
+  @include media(tablet, desktop) {
+    padding: 10px 30px;
+  }
+
   &:last-of-type {
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid $gray-light;
   }
-
-  &:before {
-    content: '';
-    background-color: $gray;
-    opacity: 0.7;
-    display: block;
-    height: calc(100% + 2px);
-    position: absolute;
-    left: -1px;
-    top: -1px;
-    width: 25px;
-  }
-
 
   &_head {
-    flex-basis: 100%;
     line-height: 15px;
     margin: 0;
+    text-transform: uppercase;
+    padding: 0 10px;
+
+    @include media(tablet, desktop) {
+      padding: 0;
+    }
   }
 
-  &_content {
+  &_date {
+    margin: 0 10px;
+    flex-basis: 100%;
+
+    @include media(tablet, desktop) {
+      flex-basis: auto;
+    }
+
+    &_item {
+      margin: 0;
+      text-align: center;
+      display: inline;
+      padding-right: 5px;
+
+      @include media(tablet, desktop) {
+        display: block;
+        padding-right: 0;
+      }
+
+      &-weekDay {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &_value {
     font-weight: 700;
     line-height: 15px;
-    margin: 10px 0 0;
-  }
+    margin-left: auto;
+    padding-left: 15px;
+    justify-self: flex-end;
+    flex-basis: 100%;
 
-  &_icon {
-    position: absolute;
-    top: 20px;
-    left: 5px;
-
-    &_entry {
-      width: 1rem;
-      stroke-width: 2;
+    @include media(tablet, desktop) {
+      flex-basis: auto;
+      padding-left: 0;
     }
 
     &-credit {
       color: $green;
     }
+  }
+
+  &_icon {
+    margin-right: 10px;
+
+    &_entry {
+      display: none;
+      width: 2rem;
+      stroke-width: 1.5;
+
+      @include media(tablet, desktop) {
+        display: block;
+      }
+    }
 
     &-debit {
-      color: $primary;
       transform: scaleX(-1);
     }
   }

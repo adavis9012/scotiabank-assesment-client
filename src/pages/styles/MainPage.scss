@@ -21,11 +21,12 @@
   }
 
   &_login{
-    width: 100%;
-    padding: 1rem;
+    width: 94%;
+    padding: 3%;
 
     @include media(tablet, desktop) {
       width: 30%;
+      padding: 1rem;
     }
   }
 }

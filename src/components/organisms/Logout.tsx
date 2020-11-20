@@ -18,7 +18,6 @@ const CLIENT_QUERY = gql`
     query {
         client{
             name
-            lastname
         }
     }
 `;
@@ -37,7 +36,7 @@ const Logout: React.FC<LogoutProps> = (props) => {
     function render() {
         return (
             <div className="logout">
-                <p>Hola, {renderFullName(client)}</p>
+                <p className="logout_text logout_text-greeting">Hola, {renderFullName(client)}</p>
                 <Button onClick={() => {props.handleLogin(false)}}>
                     Cerrar sesión
                 </Button>
@@ -46,7 +45,7 @@ const Logout: React.FC<LogoutProps> = (props) => {
     }
 
     function renderFullName(client: CLIENT_DATA["client"]): string {
-        return `${client.name} ${client.lastname}`
+        return `${client.name}`
     }
 
     function getClientToRender(data: CLIENT_DATA) {

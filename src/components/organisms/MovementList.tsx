@@ -1,8 +1,8 @@
 import React from 'react';
 import Movement, {MovementProps} from "../molecules/Movement";
+import './styles/MovementList.scss';
 
 interface MovementListProps {
-    title?: string,
     movements: MovementProps[]
 }
 
@@ -12,12 +12,9 @@ const MovementList: React.FC<MovementListProps> = (props) => {
     });
 
     return (
-        <div>
-            <h1>{props.title}</h1>
-            <ul>
-                {movementList}
-            </ul>
-        </div>
+        <ul className="movementList">
+            {movementList}
+        </ul>
     );
 }
 
