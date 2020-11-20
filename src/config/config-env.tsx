@@ -11,5 +11,5 @@ const production: ConfigEnv = {
 };
 
 export default (() => {
-    return process.env.ENV === 'production' ? production : local;
+    return process.env.NODE_ENV === 'production' ? production : local;
 })();
